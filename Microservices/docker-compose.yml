@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  user-service:
+    build:
+      context: ./user-service
+    image: ankit200193/user-service:latest
+    ports:
+      - "3000:3000"
+    container_name: user-service
+
+  product-service:
+    build:
+      context: ./product-service
+    image: ankit200193/product-service:latest
+    ports:
+      - "3001:3001"
+    container_name: product-service
+
+  order-service:
+    build:
+      context: ./order-service
+    image: ankit200193/order-service:latest
+    ports:
+      - "3002:3002"
+    container_name: order-service
+
+  gateway-service:
+    build:
+      context: ./gateway-service
+    image: ankit200193/gateway-service:latest
+    ports:
+      - "3003:3003"
+    depends_on:
+      - user-service
+      - product-service
+      - order-service
+    container_name: gateway-service
