@@ -1,12 +1,11 @@
 # Microservices Deployment with Minikube & Kubernetes
 
-## 📦 Setting Up Minikube on Windows
+## Setting Up Minikube on Windows
 
 ### Step 1: Install Chocolatey
 
 * Visit: [https://chocolatey.org/install](https://chocolatey.org/install)
 * Copy and run the following command in **Command Prompt (Admin)**:
-
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; \
 [System.Net.ServicePointManager]::SecurityProtocol = \
@@ -18,7 +17,6 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocola
 
 * Visit: [https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
 * Or directly run:
-
 ```bash
 choco install kubernetes-cli
 kubectl version --client
@@ -50,7 +48,7 @@ minikube start
 
 ---
 
-## 🔁 Change kubectl Context
+## Change kubectl Context(bonus)
 
 ```bash
 kubectl config get-contexts
@@ -60,13 +58,13 @@ notepad %USERPROFILE%\.kube\config
 
 ---
 
-## 🚀 Steps to Deploy the App
+##  Steps to Deploy the App
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/ankitanand200193/Skill_test_02_B10.git
+cd Microservices
 ```
 
 ### Step 2: Create Dockerfiles and docker-compose
@@ -113,37 +111,28 @@ kubectl port-forward services/gateway-service 3003:3003 -n microservices
 
 ### Access in Browser/Postman:
 
-* [http://localhost:3000](http://localhost:3000) → user-service
-* [http://localhost:3001](http://localhost:3001) → product-service
-* [http://localhost:3002](http://localhost:3002) → order-service
-* [http://localhost:3003](http://localhost:3003) → gateway-service
+* [http://localhost:3000](http://localhost:3000/users) → user-service
+* [http://localhost:3001](http://localhost:3001/products) → product-service
+* [http://localhost:3002](http://localhost:3002/orders) → order-service
+* [http://localhost:3003](http://localhost:3003/api/users) → gateway-service
 
 ### View Logs
 
 ```bash
-kubectl logs -f deployment/user-service -n microservices
+kubectl logs deployment/user-service -n microservices
 ```
 
 ---
 
-## ❓ Frequently Asked Questions
+## Frequently Asked Questions
 
 ### Q: Why is gateway-service using NodePort?
 
-✅ It acts as the **entry point** to your application and must be accessible from outside the cluster.
+It acts as the **entry point** to your application and must be accessible from outside the cluster.
 
 ### Q: Why are user-service, product-service, and order-service using ClusterIP?
 
-✅ These are **internal microservices**, only accessed by the gateway.
-
-### Q: How can I access all services directly?
-
-✅ Either:
-
-* Change their service type to `NodePort`, or
-* Expose them via gateway or an **Ingress Controller** (recommended).
-
----
+These are **internal microservices**, only accessed by the gateway.
 
 ## 🛠 Commonly Used Commands
 
@@ -156,8 +145,5 @@ docker rmi ankit200193/gateway-service:latest
 docker compose build
 kubectl config get-contexts
 kubectl delete deployments --all -n <namespace>
+git push origin main --force
 ```
-
----
-
-✅ You're now fully set to deploy and manage your microservices using Docker, Kubernetes, and Minikube!
