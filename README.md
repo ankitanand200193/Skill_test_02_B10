@@ -116,10 +116,10 @@ kubectl port-forward services/gateway-service 3003:3003 -n microservices
 
 ### Access in Browser/Postman:
 
-* [http://localhost:3000](http://localhost:3000/users) → user-service
-* [http://localhost:3001](http://localhost:3001/products) → product-service
-* [http://localhost:3002](http://localhost:3002/orders) → order-service
-* [http://localhost:3003](http://localhost:3003/api/users) → gateway-service
+* [http://localhost:3000/users](http://localhost:3000/users) → user-service
+* [http://localhost:3001/products](http://localhost:3001/products) → product-service
+* [http://localhost:3002/orders](http://localhost:3002/orders) → order-service
+* [http://localhost:3003/api/users](http://localhost:3003/api/users) → gateway-service
 
 #### Gateway interacting with all services:
 
