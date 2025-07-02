@@ -44,6 +44,6 @@ app.post('/api/orders', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Gateway service running on port ${port}`);
 });
