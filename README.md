@@ -100,6 +100,11 @@ kubectl create namespace microservices
 kubectl apply -f <folder-name>/ -n microservices
 ```
 
+#### Validating Pods & Services :
+
+![alt](Microservices/submission/screenshots/Pods_services.png)
+
+
 ### Step 7: Test Services via Port Forwarding
 
 ```bash
@@ -116,11 +121,20 @@ kubectl port-forward services/gateway-service 3003:3003 -n microservices
 * [http://localhost:3002](http://localhost:3002/orders) → order-service
 * [http://localhost:3003](http://localhost:3003/api/users) → gateway-service
 
+#### Gateway interacting with all services:
+
+![alt](Microservices/submission/screenshots/service-test.png)
+
 ### View Logs
 
 ```bash
 kubectl logs deployment/user-service -n microservices
 ```
+
+#### Logs
+
+![alt](Microservices/submission/screenshots/logs.png)
+
 
 ---
 
