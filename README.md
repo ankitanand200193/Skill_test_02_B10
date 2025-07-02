@@ -152,9 +152,9 @@ These are **internal microservices**, only accessed by the gateway.
 
 ```bash
 kubectl delete pods --all -n <namespace>
-kubectl port-forward service/user-service 3000:3000 -n <namespace>
+kubectl port-forward services/user-service 3000:3000 -n <namespace>
 kubectl apply -f <folder-name>/ -n <namespace>
-kubectl logs -f deployment/user-service -n <namespace>
+kubectl logs deployment/user-service -n <namespace>
 docker rmi ankit200193/gateway-service:latest
 docker compose build
 kubectl config get-contexts
